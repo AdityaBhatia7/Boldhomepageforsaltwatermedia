@@ -1,0 +1,5 @@
+@import './fonts.css';
+@import 'slick-carousel/slick/slick.css';
+@import './slick-custom-theme.css';
+@import './tailwind.css';
+@import './theme.css';
