@@ -1,10 +1,10 @@
-import { motion } from "motion/react";
-import { useInView } from "motion/react";
-import { useRef } from "react";
+import { motion, useInView } from "motion/react";
+import { useRef, useEffect, useState } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Slider from "react-slick";
 
+// Image paths (from /public)
 const indiaGateImage = "/india.png";
 const werklivImage = "/werkliv.png";
 const diamondDesignImage = "/diamond.png";
@@ -16,7 +16,8 @@ const portfolioItems = [
   {
     client: "India Gate Restaurant",
     category: "Restaurant",
-    description: "Serving 36 years of heritage, elegance, and Indian fine dining.",
+    description:
+      "Serving 36 years of heritage, elegance, and Indian fine dining.",
     image: indiaGateImage,
   },
   {
@@ -51,32 +52,32 @@ const portfolioItems = [
     client: "St. John's Hike Club",
     category: "Community & Outdoor Recreation",
     description:
-      "Brought together 3,000+ hikers and local brands through authentic community building.",
+      "Brought together 3000+ hikers and local brands through authentic community building.",
     image: hikeClubImage,
   },
 ];
 
-// Custom arrows (carousel only)
-function NextArrow(props: any) {
+// Arrows
+function NextArrow({ onClick }: any) {
   return (
     <button
-      onClick={props.onClick}
+      onClick={onClick}
       className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-accent shadow-lg"
       aria-label="Next slide"
     >
-      <ChevronRight className="size-6 text-accent-foreground" />
+      <ChevronRight className="size-6 text-white" />
     </button>
   );
 }
 
-function PrevArrow(props: any) {
+function PrevArrow({ onClick }: any) {
   return (
     <button
-      onClick={props.onClick}
+      onClick={onClick}
       className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-accent shadow-lg"
       aria-label="Previous slide"
     >
-      <ChevronLeft className="size-6 text-accent-foreground" />
+      <ChevronLeft className="size-6 text-white" />
     </button>
   );
 }
@@ -85,28 +86,33 @@ export function Portfolio() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
+  // Force correct slides per screen
+  const [slidesToShow, setSlidesToShow] = useState(3);
+
+  useEffect(() => {
+    const updateSlides = () => {
+      const w = window.innerWidth;
+      if (w < 640) setSlidesToShow(1);
+      else if (w < 1024) setSlidesToShow(2);
+      else setSlidesToShow(3);
+    };
+
+    updateSlides();
+    window.addEventListener("resize", updateSlides);
+    return () => window.removeEventListener("resize", updateSlides);
+  }, []);
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow,
     slidesToScroll: 1,
+    arrows: true,
+    swipeToSlide: true,
+    adaptiveHeight: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: { slidesToShow: 2 },
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 1,
-          centerMode: true,
-          centerPadding: "24px",
-        },
-      },
-    ],
   };
 
   return (
@@ -123,25 +129,14 @@ export function Portfolio() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2
-            className="text-4xl sm:text-5xl md:text-6xl mb-6"
-            style={{ fontFamily: "var(--font-heading)", fontWeight: 800 }}
-          >
+          <h2 className="text-4xl sm:text-5xl md:text-6xl mb-6 font-extrabold">
             Recent Work
           </h2>
-          <p
-            className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
             Brands we’ve had the privilege of working with.
-            <br className="hidden sm:block" />
+            <br />
             Thoughtful content for businesses that care about how they{" "}
-            <span
-              className="text-accent"
-              style={{ fontFamily: "var(--font-accent)" }}
-            >
-              show up.
-            </span>
+            <span className="text-accent font-semibold">show up.</span>
           </p>
         </motion.div>
 
@@ -154,37 +149,26 @@ export function Portfolio() {
           <Slider {...settings}>
             {portfolioItems.map((item) => (
               <div key={item.client} className="px-3">
-                <div className="bg-card rounded-2xl overflow-hidden border border-border/50 hover:shadow-xl transition">
-                  <div className="aspect-[4/3] bg-muted">
+                <div className="bg-card rounded-2xl overflow-hidden border border-border/50">
+                  <div className="aspect-[4/3] bg-muted relative">
                     <ImageWithFallback
                       src={item.image}
                       alt={item.client}
                       className="w-full h-full object-cover"
                     />
+                    <div className="absolute top-4 right-4 p-3 bg-card rounded-full">
+                      <ArrowUpRight className="size-5 text-primary" />
+                    </div>
                   </div>
-                  <div className="p-6 sm:p-8">
-                    <p
-                      className="text-sm text-primary uppercase tracking-wide mb-2"
-                      style={{
-                        fontFamily: "var(--font-heading)",
-                        fontWeight: 800,
-                      }}
-                    >
+
+                  <div className="p-6">
+                    <p className="text-sm uppercase tracking-wide text-primary font-bold mb-2">
                       {item.category}
                     </p>
-                    <h3
-                      className="text-2xl sm:text-3xl mb-3"
-                      style={{
-                        fontFamily: "var(--font-heading)",
-                        fontWeight: 800,
-                      }}
-                    >
+                    <h3 className="text-2xl font-extrabold mb-3">
                       {item.client}
                     </h3>
-                    <p
-                      className="text-base text-muted-foreground"
-                      style={{ fontFamily: "var(--font-body)" }}
-                    >
+                    <p className="text-muted-foreground">
                       {item.description}
                     </p>
                   </div>
