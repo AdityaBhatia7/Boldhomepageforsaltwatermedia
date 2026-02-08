@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Slider from "react-slick";
+
 const indiaGateImage = "/india.png";
 const werklivImage = "/werkliv.png";
 const diamondDesignImage = "/diamond.png";
@@ -21,19 +22,22 @@ const portfolioItems = [
   {
     client: "Wester-Land (Werkliv)",
     category: "Real Estate & Property Management",
-    description: "A modern real estate group building quality student and rental housing, brought to life through community-driven storytelling.",
+    description:
+      "A modern real estate group building quality student and rental housing, brought to life through community-driven storytelling.",
     image: werklivImage,
   },
   {
     client: "Diamond Design",
     category: "Jewelry",
-    description: "4th generation master jewelers showcasing timeless elegance through authentic UGC-styled video content.",
+    description:
+      "4th generation master jewelers showcasing timeless elegance through authentic UGC-styled video content.",
     image: diamondDesignImage,
   },
   {
     client: "Yurtopia",
     category: "Vacation Rental",
-    description: "UGC-style video content highlighting the stay and the beauty of the Bonavista Peninsula.",
+    description:
+      "UGC-style video content highlighting the stay and the beauty of the Bonavista Peninsula.",
     image: yurtopiaImage,
   },
   {
@@ -45,7 +49,8 @@ const portfolioItems = [
   {
     client: "St. John's Hike Club",
     category: "Community & Outdoor Recreation",
-    description: "Brought together 3000+ hikers and local brands through authentic community building.",
+    description:
+      "Brought together 3000+ hikers and local brands through authentic community building.",
     image: hikeClubImage,
   },
 ];
@@ -56,10 +61,11 @@ function NextArrow(props: any) {
   return (
     <button
       onClick={onClick}
-      className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-accent border border-accent hover:bg-accent/90 transition-all duration-300 shadow-lg group"
+      className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-accent border border-accent hover:bg-accent/90 transition-all duration-300 shadow-lg"
       aria-label="Next slide"
+      type="button"
     >
-      <ChevronRight className="size-6 text-accent-foreground transition-colors" />
+      <ChevronRight className="size-6 text-accent-foreground" />
     </button>
   );
 }
@@ -69,10 +75,11 @@ function PrevArrow(props: any) {
   return (
     <button
       onClick={onClick}
-      className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-accent border border-accent hover:bg-accent/90 transition-all duration-300 shadow-lg group"
+      className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-accent border border-accent hover:bg-accent/90 transition-all duration-300 shadow-lg"
       aria-label="Previous slide"
+      type="button"
     >
-      <ChevronLeft className="size-6 text-accent-foreground transition-colors" />
+      <ChevronLeft className="size-6 text-accent-foreground" />
     </button>
   );
 }
@@ -95,6 +102,7 @@ export function Portfolio() {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          centerMode: false,
         },
       },
       {
@@ -102,16 +110,25 @@ export function Portfolio() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: '20px',
           arrows: true,
+          dots: true,
+
+          // Key mobile fixes to make each client fit the screen
+          centerMode: false,
+          centerPadding: "0px",
+          swipeToSlide: true,
+          adaptiveHeight: true,
         },
       },
     ],
   };
 
   return (
-    <section id="work" ref={ref} className="py-24 sm:py-32 px-6 sm:px-8 lg:px-12 bg-gradient-to-b from-muted/30 to-background">
+    <section
+      id="work"
+      ref={ref}
+      className="py-24 sm:py-32 px-6 sm:px-8 lg:px-12 bg-gradient-to-b from-muted/30 to-background"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
         <motion.div
@@ -120,23 +137,20 @@ export function Portfolio() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 sm:mb-20"
         >
-          <h2 
+          <h2
             className="text-4xl sm:text-5xl md:text-6xl mb-6"
-            style={{ fontFamily: 'var(--font-heading)', fontWeight: 800 }}
+            style={{ fontFamily: "var(--font-heading)", fontWeight: 800 }}
           >
             Recent Work
           </h2>
-          <p 
+          <p
             className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto"
-            style={{ fontFamily: 'var(--font-body)' }}
+            style={{ fontFamily: "var(--font-body)" }}
           >
-            Brands we've had the Privilege of working with.{" "}
+            Brands we've had the Privilege of working with.
             <br className="hidden sm:block" />
             Thoughtful content for businesses that care about how they{" "}
-            <span 
-              className="text-accent"
-              style={{ fontFamily: 'var(--font-accent)' }}
-            >
+            <span className="text-accent" style={{ fontFamily: "var(--font-accent)" }}>
               Show Up.
             </span>
           </p>
@@ -151,7 +165,7 @@ export function Portfolio() {
         >
           <Slider {...settings}>
             {portfolioItems.map((item) => (
-              <div key={item.client} className="sm:px-3">
+              <div key={item.client} className="px-0 sm:px-3">
                 <div className="group cursor-pointer">
                   <div className="bg-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-border/50">
                     <div className="aspect-[4/3] relative overflow-hidden bg-muted">
@@ -165,23 +179,21 @@ export function Portfolio() {
                         <ArrowUpRight className="size-5 text-primary" />
                       </div>
                     </div>
+
                     <div className="p-6 sm:p-8">
-                      <p 
+                      <p
                         className="text-sm text-primary mb-2 uppercase tracking-wide"
-                        style={{ fontFamily: 'var(--font-heading)', fontWeight: 800 }}
+                        style={{ fontFamily: "var(--font-heading)", fontWeight: 800 }}
                       >
                         {item.category}
                       </p>
-                      <h3 
+                      <h3
                         className="text-2xl sm:text-3xl mb-3"
-                        style={{ fontFamily: 'var(--font-heading)', fontWeight: 800 }}
+                        style={{ fontFamily: "var(--font-heading)", fontWeight: 800 }}
                       >
                         {item.client}
                       </h3>
-                      <p 
-                        className="text-base text-muted-foreground"
-                        style={{ fontFamily: 'var(--font-body)' }}
-                      >
+                      <p className="text-base text-muted-foreground" style={{ fontFamily: "var(--font-body)" }}>
                         {item.description}
                       </p>
                     </div>
@@ -197,31 +209,40 @@ export function Portfolio() {
         .portfolio-carousel .slick-slide {
           padding: 0 12px;
         }
-        
+
         .portfolio-carousel .slick-list {
           margin: 0 -12px;
         }
-        
+
         @media (max-width: 640px) {
           .portfolio-carousel .slick-slide {
-            padding: 0;
+            padding: 0 !important;
           }
-          
+
           .portfolio-carousel .slick-list {
-            margin: 0;
+            margin: 0 !important;
+          }
+
+          .portfolio-carousel .slick-track {
+            display: flex;
+            align-items: stretch;
+          }
+
+          .portfolio-carousel .slick-slide > div {
+            height: 100%;
           }
         }
-        
+
         .portfolio-carousel .slick-dots {
           bottom: -50px;
         }
-        
+
         .portfolio-carousel .slick-dots li button:before {
           font-size: 12px;
           color: hsl(var(--primary));
           opacity: 0.3;
         }
-        
+
         .portfolio-carousel .slick-dots li.slick-active button:before {
           opacity: 1;
           color: hsl(var(--primary));
