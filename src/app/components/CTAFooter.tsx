@@ -10,7 +10,7 @@ export function CTAFooter() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section ref={ref} className="relative py-24 sm:py-32 px-6 sm:px-8 lg:px-12 bg-gradient-to-b from-background to-muted/30 overflow-hidden">
+    <section id="contact" ref={ref} className="relative py-24 sm:py-32 px-6 sm:px-8 lg:px-12 bg-gradient-to-b from-background to-muted/30 overflow-hidden">
       {/* Decorative background elements */}
       <motion.div
         className="absolute top-10 left-10 w-40 h-40 rounded-full bg-primary/5"
@@ -149,14 +149,18 @@ export function CTAFooter() {
             
             <div className="flex items-center gap-6">
               <a 
-                href="#" 
+                href="https://www.instagram.com/salt.water.media/?hl=en" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="size-5" />
               </a>
               <a 
-                href="#" 
+                href="https://www.linkedin.com/company/salt-water-media-inc/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="LinkedIn"
               >

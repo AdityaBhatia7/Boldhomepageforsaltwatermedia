@@ -102,6 +102,8 @@ export function Portfolio() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: '20px',
         },
       },
     ],
@@ -127,14 +129,15 @@ export function Portfolio() {
             className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto"
             style={{ fontFamily: 'var(--font-body)' }}
           >
-            Local businesses we're{" "}
+            Brands we've had the privilege of working with.{" "}
+            <br className="hidden sm:block" />
+            Thoughtful content for businesses that care about how they{" "}
             <span 
               className="text-accent"
               style={{ fontFamily: 'var(--font-accent)' }}
             >
-              Proud
+              Show Up.
             </span>
-            {" "}to work with.
           </p>
         </motion.div>
 
