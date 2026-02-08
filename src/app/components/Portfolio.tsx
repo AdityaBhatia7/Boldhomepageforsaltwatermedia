@@ -56,10 +56,10 @@ function NextArrow(props: any) {
   return (
     <button
       onClick={onClick}
-      className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-card/90 backdrop-blur-sm border border-border/50 hover:bg-primary hover:border-primary transition-all duration-300 shadow-lg group"
+      className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-accent border border-accent hover:bg-accent/90 transition-all duration-300 shadow-lg group"
       aria-label="Next slide"
     >
-      <ChevronRight className="size-6 text-foreground group-hover:text-primary-foreground transition-colors" />
+      <ChevronRight className="size-6 text-accent-foreground transition-colors" />
     </button>
   );
 }
@@ -69,10 +69,10 @@ function PrevArrow(props: any) {
   return (
     <button
       onClick={onClick}
-      className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-card/90 backdrop-blur-sm border border-border/50 hover:bg-primary hover:border-primary transition-all duration-300 shadow-lg group"
+      className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-accent border border-accent hover:bg-accent/90 transition-all duration-300 shadow-lg group"
       aria-label="Previous slide"
     >
-      <ChevronLeft className="size-6 text-foreground group-hover:text-primary-foreground transition-colors" />
+      <ChevronLeft className="size-6 text-accent-foreground transition-colors" />
     </button>
   );
 }
@@ -102,7 +102,8 @@ export function Portfolio() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          centerMode: false,
+          centerMode: true,
+          centerPadding: '40px',
         },
       },
     ],
