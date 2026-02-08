@@ -102,8 +102,7 @@ export function Portfolio() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: '20px',
+          centerMode: false,
         },
       },
     ],
@@ -129,15 +128,16 @@ export function Portfolio() {
             className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto"
             style={{ fontFamily: 'var(--font-body)' }}
           >
-            Brands we've had the privilege of working with.{" "}
+            Brands we've had the Privilege of working with.{" "}
             <br className="hidden sm:block" />
             Thoughtful content for businesses that care about how they{" "}
             <span 
               className="text-accent"
               style={{ fontFamily: 'var(--font-accent)' }}
             >
-              Show Up.
+              Show Up
             </span>
+            .
           </p>
         </motion.div>
 
@@ -150,7 +150,7 @@ export function Portfolio() {
         >
           <Slider {...settings}>
             {portfolioItems.map((item) => (
-              <div key={item.client} className="px-3">
+              <div key={item.client} className="sm:px-3">
                 <div className="group cursor-pointer">
                   <div className="bg-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-border/50">
                     <div className="aspect-[4/3] relative overflow-hidden bg-muted">
@@ -199,6 +199,16 @@ export function Portfolio() {
         
         .portfolio-carousel .slick-list {
           margin: 0 -12px;
+        }
+        
+        @media (max-width: 640px) {
+          .portfolio-carousel .slick-slide {
+            padding: 0;
+          }
+          
+          .portfolio-carousel .slick-list {
+            margin: 0;
+          }
         }
         
         .portfolio-carousel .slick-dots {
