@@ -137,9 +137,8 @@ export function Portfolio() {
               className="text-accent"
               style={{ fontFamily: 'var(--font-accent)' }}
             >
-              Show Up
+              Show Up.
             </span>
-            .
           </p>
         </motion.div>
 
