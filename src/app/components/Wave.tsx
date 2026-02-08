@@ -1,8 +1,8 @@
 import { motion, useScroll, useTransform, useTime } from "motion/react";
 import { useState, useEffect, useRef } from "react";
-import puffin1 from "figma:asset/d00fbcf0988ba32cf316727becf5effab7ff47bf.png";
-import puffin2 from "figma:asset/97bab1e9b87b337a18922da4202959db64951b86.png";
-import puffin3 from "figma:asset/c89bcebf534635950167d3b632fbf0e727c74535.png";
+const puffin1 = "/puffin-1.png";
+const puffin2 = "/puffin-2.png";
+const puffin3 = "/puffin-3.png";
 
 const puffinImages = [puffin1, puffin2, puffin3];
 

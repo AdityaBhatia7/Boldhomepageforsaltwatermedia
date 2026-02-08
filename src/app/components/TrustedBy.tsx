@@ -1,12 +1,12 @@
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
-import aramarkImage from "figma:asset/67c590d7232a850c69add98b2c849205555389fc.png";
-import owaaImage from "figma:asset/599620a6187a36a02aa87bb158b4a4b66240908f.png";
-import munCfeImage from "figma:asset/b5747de4f9df110d0c12ff988e564e7877fa5046.png";
-import munImage from "figma:asset/dc64f52263b3e2d516068914a64d4a48689e394f.png";
-import gardinerImage from "figma:asset/01449d902aaa9c6ee8a615c451f706c6a3152c87.png";
-import theMuseImage from "figma:asset/ec6fc046986a9ddf87c97c49969c63fc70674446.png";
+const aramarkImage = "/aramark.png";
+const owaaImage = "/oawa.png";
+const munCfeImage = "/mce.png";
+const munImage = "/memorial.png";
+const gardinerImage = "/gardiner.png";
+const theMuseImage = "/muse.png";
 
 const companies = [
   { name: "Aramark", logo: aramarkImage },

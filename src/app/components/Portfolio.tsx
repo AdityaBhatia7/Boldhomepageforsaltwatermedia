@@ -4,12 +4,12 @@ import { useRef } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Slider from "react-slick";
-import indiaGateImage from "figma:asset/1e72b407c44be9b521a420180a691ec98d4c9696.png";
-import werklivImage from "figma:asset/5325e6953a2b394d406bbcb821b1ac80cf5a8131.png";
-import diamondDesignImage from "figma:asset/ecacc23935becb4986b5d2873fbf203779e290d4.png";
-import yurtopiaImage from "figma:asset/8bded444cca63146531bbd8f32c161f2908794a5.png";
-import auraImage from "figma:asset/f7f86fe6bcf07172f8c495ce8046ba7c39c333d8.png";
-import hikeClubImage from "figma:asset/4fe6b60abfe5712f0c36d9dfd2ac0073a808aa44.png";
+const indiaGateImage = "/india.png";
+const werklivImage = "/werkliv.png";
+const diamondDesignImage = "/diamond.png";
+const yurtopiaImage = "/yurtopia.png";
+const auraImage = "/aura.png";
+const hikeClubImage = "/hike.png";
 
 const portfolioItems = [
   {

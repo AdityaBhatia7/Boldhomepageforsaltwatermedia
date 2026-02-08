@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
-import logoImage from "figma:asset/e4f35cfafabace664742c56dc26a113489c71608.png";
+const logoImage = "/salt.png";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);

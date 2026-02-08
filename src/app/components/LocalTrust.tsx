@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
 import { MapPin, Eye, Heart } from "lucide-react";
-import nlFlagImage from "figma:asset/bc0c2edd4ecee8b059eec37c672be172c0aef0ab.png";
+const nlFlagImage = "/flag.png";
 
 export function LocalTrust() {
   const ref = useRef(null);

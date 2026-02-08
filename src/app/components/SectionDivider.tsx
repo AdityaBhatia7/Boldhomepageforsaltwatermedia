@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
-import logoImage from "figma:asset/8088a439b97b4b38f96123ea8244f774ab6c2057.png";
+const logoImage = "/saltcolor.png";
 
 export function SectionDivider() {
   const ref = useRef(null);
