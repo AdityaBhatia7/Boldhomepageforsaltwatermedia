@@ -10,11 +10,21 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+
   resolve: {
     alias: {
       // Alias @ to the src directory
       '@': path.resolve(__dirname, './src'),
     },
+  },
+
+  // Because you're using a custom domain (saltwatermediainc.ca)
+  base: '/',
+
+  // Build output to /docs so GitHub Pages can deploy it
+  build: {
+    outDir: 'docs',
+    emptyOutDir: true,
   },
 
   // File types to support raw imports. Never add .css, .tsx, or .ts files to this.
