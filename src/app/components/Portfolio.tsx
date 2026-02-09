@@ -133,7 +133,7 @@ export function Portfolio() {
             Recent Work
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Brands we’ve had the privilege of working with.
+            Brands we’re proud to work with.
             <br />
             Thoughtful content for businesses that care about how they{" "}
             <span className="text-accent font-semibold">show up.</span>
