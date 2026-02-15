@@ -131,6 +131,7 @@ export function Hero() {
             size="lg" 
             className="group text-base sm:text-lg px-8 py-6 bg-white/10 backdrop-blur-md border border-white/20 text-accent hover:bg-accent hover:border-accent/50 hover:text-white shadow-[0_8px_32px_0_rgba(249,115,22,0.15)] hover:shadow-[0_8px_32px_0_rgba(249,115,22,0.35)] transition-all"
             style={{ fontFamily: 'var(--font-heading)' }}
+            onClick={scrollToWork}
           >
             See Our Work <ArrowRight className="ml-2 size-5 transition-colors" />
           </Button>
