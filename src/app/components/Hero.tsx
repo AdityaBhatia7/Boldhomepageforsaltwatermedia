@@ -23,6 +23,13 @@ export function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  const scrollToWork = () => {
+    const workSection = document.getElementById('work');
+    if (workSection) {
+      workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 sm:px-8 lg:px-12 overflow-hidden bg-gradient-to-b from-background to-muted/30 pt-32">
       {/* Content */}
